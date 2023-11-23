@@ -24,7 +24,7 @@ INSERT INTO pays (iso_3, nom, iso_2, nationalité) VALUES
 SELECT * FROM pays ;
 
 CREATE TABLE IF NOT EXISTS contacts (
-    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    id_1 INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     nom VARCHAR(70) NOT NULL,
     prenom VARCHAR(70) NOT NULL,
     date_de_naissance DATE,
@@ -49,4 +49,32 @@ INSERT INTO contacts (nom, prenom, date_de_naissance, sexe, adresse, cp, ville, 
 ("Trevor", "McDundee", "1980-01-02", "Homme", "12 Koala Avenue", "NSW 2000", "Sydney", "AUS");
 
 SELECT * FROM contacts ;
+
+CREATE TABLE IF NOT EXISTS telephone (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    id_contact_1 INT,
+    numero VARCHAR(50) NOT NULL,
+    type_telephone TINYINT UNSIGNED, -- j'ai essayé tinyint au lieu de BYTE, mais sans succès pour regler mon erreur
+    FOREIGN KEY (id_contact_1) REFERENCES contacts(id_1)
+);
+
+INSERT INTO telephone (id_contact, numero, type) VALUES
+(1, "0607080709", 1),
+(2, "0989798090", 2),
+(3, "0478900989", 1),
+(4, "0697898920", 1),
+(5, "0608389909", 1),
+(6, "0798946537", 1),
+(7, "0490783445", 2),
+(8, "0465892009", 2),
+(9, "0684398209", 1),
+(10,"0837846299", 2);
+
+SELECT * FROM telephone ;
+
+
+DROP TABLE pays ;
+DROP TABLE contacts ;
+DROP TABLE telephone ;
+
 
