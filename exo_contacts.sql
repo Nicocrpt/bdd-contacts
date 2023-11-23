@@ -23,3 +23,16 @@ INSERT INTO pays (iso_3, nom, iso_2, nationalité) VALUES
 
 SELECT * FROM pays ;
 
+CREATE TABLE IF NOT EXISTS contacts (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nom VARCHAR(70) NOT NULL,
+    prenom(70) NOT NULL,
+    date_de_naissance DATE,
+    sexe VARCHAR(10),
+    adresse TEXT,
+    cp VARCHAR(10) NOT NULL,
+    ville VARCHAR(70) NOT NULL,
+    pays_iso_3 VARCHAR(3) NOT NULL,
+    FOREIGN KEY (pays_iso_3) REFERENCES pays(iso_3)
+);
+
